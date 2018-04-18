@@ -1,0 +1,17 @@
+html,body {
+    height: 100%;
+}
+
+.page-wrapper {
+    margin: 0;
+    padding: 0 !important;
+}
+
+.sidebar {
+    min-height: 100vh !important;
+}
+
+.flush-column {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
