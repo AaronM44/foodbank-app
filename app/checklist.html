@@ -10,7 +10,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         <!-- Custom Styles -->
-        <link rel="stylesheet" type="text/css" href="style/style.css">    
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <!-- JavaScript -->
+        <script type="text/javascript" src="js/javascript.js"></script>
     </head>
     <body class="fixed-nav sticky-footer">
 
@@ -26,7 +28,7 @@
                         <!-- Vertical Nav Bar -->
                         <ul class="nav nav-pills flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Amend Application</a>
+                                <a class="nav-link" href="#">Volunteer Info</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Record Card</a>
@@ -81,6 +83,149 @@
                                     <input type="checkbox" class="form-check-input" value="">Introduced to Project Manager/Supervisor
                                 </label>
                             </div>
+                            <div class="form-inline">
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">Buddy arranged
+                                    </label>
+                                </div>
+                                <div class="form-inline">
+                                    <label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Name of buddy">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-inline">
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">References requested (<sub>tick as appropriate</sub>)
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">1
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">2
+                                    </label>
+                                </div>   
+                            </div>
+                            <div class="form-inline">
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">References received (<sub>tick as appropriate</sub>)
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">1
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">2
+                                    </label>
+                                </div>   
+                            </div>
+                            <div class="form-inline">
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">Agreed start date, time & location
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">On hold
+                                    </label>
+                                </div>
+                                <div class="form-inline">
+                                    <label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Other">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Confidentiality agreement signed
+                                </label>
+                            </div>
+                            <div class="form-inline">
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">Induction/Taster day arranged
+                                    </label>
+                                </div>
+                                <div class="form-inline">
+                                    <label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="To be carried out by">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Added to database of volunteer contracts
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">PVG check (<sub>if required</sub>)
+                                </label>
+                            </div>
+                            <br>
+                            <h2>Once Started</h2>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Induction & welcome on first day
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Health & Safety tour given
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Health & Safety form signed
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Role description/volunteer agreement supplied
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Volunteer handbook supplied
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Added to email list for newsletters
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Update volunteer rota
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">1<sup>st</sup> week check OK
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">1<sup>st</sup> month review
+                                </label>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Cancel</button>
+                            </div>
+                            <br><br>
                         </form>
                     </div>
                 </div>
