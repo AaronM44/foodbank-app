@@ -19,3 +19,7 @@ html,body {
 .form-group button {
     margin-left: 10px !important;
 }
+
+textarea {
+    width: auto !important; 
+}
