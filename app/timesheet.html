@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Volunteer Records</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <!-- Custom Styles -->
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <!-- JavaScript -->
+        <script type="text/javascript" src="js/javascript.js"></script>
+        <!-- For Date Picker -->
+        <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
+        <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body class="fixed-nav sticky-footer">
+        <div class="row py-3 page-wrapper">
+            <div class="col-3 order-2 bg-light sidebar">
+                <div class="sticky-top">
+                    <!-- Logo -->
+                    <a href="#"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
+                    <br><br>
+                    <!-- Currently selected volunteer -->
+                    <h5 class="text-center">No Volunteer Selected</h5>
+                    <br>
+                    <!-- Vertical Nav Bar -->
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="volunteer.html">Volunteer Info</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Record Card</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="checklist.html">Starting Checklist</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="calendar.html">Timesheets</a>
+                        </li>        
+                    </ul>
+                </div>
+            </div>
+            <div class="col-9 order-2 flush-column">
+                <!-- Horizontal Nav Bar -->
+                <nav class="navbar navbar-expand-sm bg-light navbar-light">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="application.html">New Volunteer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="timesheet.html">New Timesheet</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Reports</a>
+                        </li>
+                    </ul>
+                    <!-- Search Bar -->
+                    <form class="form-inline ml-auto" id="search">
+                        <input class="form-control mr-sm-2" placeholder="First Name / Last Name" type="text">
+                        <button class="btn btn-primary my-2 my-sm-0" type="button">Search</button>
+                    </form>
+                </nav>
+                <!-- Content -->
+                <div class="container">
+                    <br>
+                    <h2>New Timesheet</h2>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    <form>
+                        <div class="row form">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="name">Week Commencing</label>
+                                    <input id="datepicker" width="270" />
+                                    <script>
+                                        $('#datepicker').datepicker({
+                                            uiLibrary: 'bootstrap4'
+                                        }); 
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="email">Volunteering Area</label>
+                                    <select class="form-control" id="sel1" width="500">
+                                        <option>Foodbank Centre</option>
+                                        <option>Fundraising</option>
+                                        <option>Promotional Events</option>
+                                        <option>Buddy Scheme</option>
+                                        <option>Supermarket Collections</option>
+                                        <option>Delivery or Collections</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="monday">Monday</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="monday">Tuesday</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="monday">Wednesday</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="monday">Thursday</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="monday">Friday</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label for="monday">Saturday</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label for="monday">Sunday</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary col-md-2">Submit</button>
+                            <button type="submit" class="btn btn-primary col-md-2">Cancel</button>
+                        </div>
+                        <br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
