@@ -1,3 +1,31 @@
+<?php
+
+session_start();
+
+error_reporting(E_ERROR | E_PARSE);
+echo print_r($_POST) . '</br >';
+echo print_r($_SESSION) . '</br >';
+
+// database connection
+include('scripts/connect.php');
+
+// variables for person searched
+$fullname = $_POST['fullname'];
+
+$names = explode(" ", $fullname);
+$first = $names[0];
+$second = $names[1];
+
+// query to return searched volunteer
+$q1 = "select * from volunteer_details where forename = '$first' or forename = '$second' or surname = '$first' or surname = '$second'";
+$r1 = mysqli_query($link, $q1);
+
+/*
+$row7=mysqli_fetch_array($result7);
+extract($row7);
+$cruiseName=$row7['cruiseName'];
+*/
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,9 +59,6 @@
                                 <a class="nav-link" href="#">Volunteer Info</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Record Card</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="#">Starting Checklist</a>
                             </li>
                             <li class="nav-item">
@@ -47,7 +72,7 @@
                     <nav class="navbar navbar-expand-sm bg-light navbar-light">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">New Volunteer</a>
+                                <a class="nav-link" href="application.php">New Volunteer</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">New Timesheet</a>
@@ -57,9 +82,9 @@
                             </li>
                         </ul>
                         <!-- Search Bar -->
-                        <form class="form-inline ml-auto" id="search">
-                            <input class="form-control mr-sm-2" placeholder="First Name / Last Name" type="text">
-                            <button class="btn btn-primary my-2 my-sm-0" type="button">Search</button>
+                        <form class="form-inline ml-auto" id="search" name="search" method='POST' action="results.php">
+                            <input class="form-control mr-sm-2" name='fullname' placeholder="First Name / Last Name" type="text">
+                            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</submit>
                         </form>
                     </nav>
                     <!-- Search Results -->
@@ -75,15 +100,28 @@
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>Join Date</th>
+                                        <th>View/Edit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>0001</td>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>03/01/2016</td>
-                                    </tr>
+									<?php  
+									while($row=mysqli_fetch_array($r1))
+									{
+									// query to get join date from application_details table
+									extract($row);
+									$q2 = "select * from application_details where vol_no = $vol_no";
+									$r2=mysqli_query($link, $q2);
+									$row2=mysqli_fetch_array($r2);
+									$date_applied=$row2['date_applied'];
+                                    echo "<tr>";
+										echo "<td>$vol_no</td>";  // volunteer number
+                                        echo "<td>$forename</td>";  // volunteer forename
+                                        echo "<td>$surname</td>";  // volunteer surname
+                                        echo "<td>$date_applied</td>";  // volunteer join date
+                                        echo '<td><form action="scripts/select_volunteer.php" method="post"><input type="hidden" name="vol_no" id="vol_no" value=' .$vol_no. '><input type="hidden" name="first_name" id="first_name" value=' .$forename. '><input type="hidden" name="last_name" id="last_name" value=' .$surname. '><input type="submit" value="Select" class="btn btn-link"></form></td>';
+                                    echo "</tr>";
+									}
+									?>
                                 </tbody>
                             </thread>
                         </table>

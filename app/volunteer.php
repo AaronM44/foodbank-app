@@ -1,3 +1,42 @@
+<?php
+    # Sessions
+    if (!isset($_SESSION))
+    {
+        session_start();
+    }
+
+    # Includes
+    require_once("scripts/connect.php");
+
+    # Error reporting
+    error_reporting(E_ERROR | E_PARSE);
+    echo print_r($_POST) . '</br >';
+    echo print_r($_SESSION) . '</br >';
+    echo $query1;
+
+    $query1 = "select * from volunteer_details where vol_no = '" .$_SESSION['vol_no']. "'";
+    $result1 = $link->query($query1);
+
+    # Save query results
+    if ($result1->num_rows > 0) {
+
+        while($row1 = $result1->fetch_assoc()) {
+            
+            $title = $row1['title'];
+            $first_name = $row1['forename'];
+            $last_name = $row1['surname'];
+            $address1 = $row1['address1'];
+            $address2 = $row['address2'];
+            $town = $row1['town'];
+            $postcode = $row1['postcode'];
+            $tel_no = $row1['tel_no'];
+            $email = $row1['email'];
+            $dob = explode("-", $row1['DOB']);
+        }
+    } 
+
+    $link->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,7 +61,7 @@
                     <a href="#"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
                     <br><br>
                     <!-- Currently selected volunteer -->
-                    <h5 class="text-center">No Volunteer Selected</h5>
+                    <h5 class="text-center"><?php echo $_SESSION['full_name'] ?></h5>
                     <br>
                     <!-- Vertical Nav Bar -->
                     <ul class="nav nav-pills flex-column">
@@ -87,6 +126,7 @@
                                     <div class="form-inline">
                                             <label for="exampleFormControlInput1">Title &nbsp;</label>
                                             <select class="form-control" id="sel1">
+                                            <option value="<?php echo $title; ?>" selected="selected"><?php echo $title; ?></option>
                                                 <option>Mr</option>
                                                 <option>Mrs</option>
                                                 <option>Miss</option>
@@ -95,52 +135,52 @@
                                         </div>
                                     <div class="form-inline">
                                         <label for="exampleFormControlInput1">&nbsp; First Name &nbsp;</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="<?php echo $first_name; ?>">
                                     </div>
                                     <div class="form-inline">
                                         <label for="exampleFormControlInput1">&nbsp; Last Name &nbsp;</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="<?php echo $last_name; ?>">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-inline">
                                     <label for="exampleFormControlInput1">Address Line 1 &nbsp;</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="<?php echo $address1; ?>">
                                 </div>
                                 <br>
                                 <div class="form-inline">
                                     <label for="exampleFormControlInput1">Address Line 2 &nbsp;</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="<?php echo $address2; ?>">
                                 </div>
                                 <br>
                                 <div class="form-inline">
                                     <label for="exampleFormControlInput1">Town/City &nbsp;</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="<?php echo $town; ?>">
                                 </div>
                                 <br>
                                 <div class="form-inline">
                                     <label for="exampleFormControlInput1">Postcode &nbsp;</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="<?php echo $postcode; ?>">
                                 </div>
                                 <br>
                                 <div class="form-inline">
                                     <label for="exampleFormControlInput1">Phone Number &nbsp;</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="<?php echo $phone; ?>">
                                 </div>
                                 <br>
                                 <div class="form-inline">
                                     <label for="exampleFormControlInput1">Email Address &nbsp;</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="<?php echo $email; ?>">
                                 </div>
                                 <br>
                                 <label for="exampleFormControlInput1">Date of Birth &nbsp;</label>
                                 <div class="form-inline">
                                     <div class="form-inline">
-                                        <input type="text" class="form-control col-sm-2" id="exampleFormControlInput1" placeholder="DD">
+                                        <input type="text" class="form-control col-sm-2" id="exampleFormControlInput1" placeholder="DD" value="<?php echo $dob[2]; ?>">
                                         <p>&nbsp; / &nbsp;</p>
-                                        <input type="text" class="form-control col-sm-2" id="exampleFormControlInput1" placeholder="MM">
+                                        <input type="text" class="form-control col-sm-2" id="exampleFormControlInput1" placeholder="MM" value="<?php echo $dob[1]; ?>">
                                         <p>&nbsp; / &nbsp;</p>
-                                        <input type="text" class="form-control col-sm-2" id="exampleFormControlInput1" placeholder="YYYY">
+                                        <input type="text" class="form-control col-sm-2" id="exampleFormControlInput1" placeholder="YYYY" value="<?php echo $dob[0]; ?>">
                                     </div>
                                 </div>
                                 <br>
