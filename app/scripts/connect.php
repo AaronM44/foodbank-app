@@ -7,8 +7,5 @@
 		exit;
 	} else {
 		mysqli_select_db($link, 'foodbank');
-		echo "connection successful";
 	}
-
-
 ?>

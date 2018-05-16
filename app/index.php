@@ -1,32 +1,13 @@
 <?php
-
-// destroy previous session
-if (isset($_SESSION)) 
-{
-	session_destroy();
-}
-
 error_reporting(E_ERROR | E_PARSE);
 
 // database connection
 include('scripts/connect.php');
 
-// variables for person searched
-$fullname = $_POST['fullname'];
-
-$names = explode(" ", $fullname);
-$first = $names[0];
-$second = $names[1];
-
 // query to return searched volunteer
-$q1 = "select * from volunteer_details where forename = '$first' or forename = '$second' or surname = '$first' or surname = '$second'";
+$q1 = "select * from volunteer_details where vol_status = 'active'";
 $r1 = mysqli_query($link, $q1);
 
-/*
-$row7=mysqli_fetch_array($result7);
-extract($row7);
-$cruiseName=$row7['cruiseName'];
-*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,13 +39,13 @@ $cruiseName=$row7['cruiseName'];
                         <!-- Vertical Nav Bar -->
                         <ul class="nav nav-pills flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Volunteer Info</a>
+                                <a class="nav-link" href="volunteer.php">Volunteer Info</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Starting Checklist</a>
+                                <a class="nav-link" href="checklist.php">Starting Checklist</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Timesheets</a>
+                                <a class="nav-link" href="calendar.php">Timesheets</a>
                             </li>        
                         </ul>
                     </div>
@@ -77,10 +58,13 @@ $cruiseName=$row7['cruiseName'];
                                 <a class="nav-link" href="application.php">New Volunteer</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">New Timesheet</a>
+                                <a class="nav-link" href="timesheet.php">New Timesheet</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="reports.php">Reports</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="arch.php">Inactive volunteers</a>
                             </li>
                         </ul>
                         <!-- Search Bar -->
@@ -92,8 +76,8 @@ $cruiseName=$row7['cruiseName'];
                     <!-- Search Results -->
                     <div class="container">
                         <br>
-                        <h2>X Results Found</h2>
-                        <p>Please select a volunteer to view.</p>
+                        <h2>Active Volunteers</h2>
+                        <p>Please select a volunteer to view by clicking on a volunteer number.</p>
                         <table class="table table-striped">
                             <thread>
                                 <thead>
@@ -102,7 +86,7 @@ $cruiseName=$row7['cruiseName'];
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>Join Date</th>
-                                        <th>View/Edit</th>
+										<th>Archive</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -111,16 +95,16 @@ $cruiseName=$row7['cruiseName'];
 									{
 									// query to get join date from application_details table
 									extract($row);
-									$q2 = "select * from application_details where vol_no = $vol_no";
+									$q2 = "select * from application_details";
 									$r2=mysqli_query($link, $q2);
 									$row2=mysqli_fetch_array($r2);
 									$date_applied=$row2['date_applied'];
                                     echo "<tr>";
-										echo "<td>$vol_no</td>";  // volunteer number
+										echo "<td><a href='index.php' style='color: black'>$vol_no</td>";  // volunteer number
                                         echo "<td>$forename</td>";  // volunteer forename
                                         echo "<td>$surname</td>";  // volunteer surname
                                         echo "<td>$date_applied</td>";  // volunteer join date
-                                        echo '<td><form action="scripts/select_volunteer.php" method="post"><input type="hidden" name="vol_no" id="vol_no" value=' .$vol_no. '><input type="hidden" name="first_name" id="first_name" value=' .$forename. '><input type="hidden" name="last_name" id="last_name" value=' .$surname. '><input type="submit" value="Select" class="btn btn-link"></form></td>';
+										echo "<td><a href='' style='color: black'>Archive</td>";  // archive function
                                     echo "</tr>";
 									}
 									?>

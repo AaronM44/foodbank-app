@@ -6,16 +6,17 @@ if (!isset($_SESSION))
 {
 	session_start();
 }
+
 $vol_no = $_SESSION['vol_no'];
 
 // database connection
-include('connect.php');
+include('scripts/connect.php');
 
 // variables
 $week = $_POST['week'];
 $area = $_POST['area'];
 $monHours = $_POST['monHours'];
-$teuHours = $_POST['teuHours'];
+$tueHours = $_POST['tueHours'];
 $wedHours = $_POST['wedHours'];
 $thuHours = $_POST['thuHours'];
 $friHours = $_POST['friHours'];
@@ -23,31 +24,36 @@ $friHours = $_POST['friHours'];
 // queries
 if($monHours)
 {
-	$q1 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES (6, '$week', 'Monday', $monHours, '$area')";
-	$r1 = mysqli_query($link, $q1);
+	$q1 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES ('" . $_SESSION['vol_no'] . "', '$week', 'Monday', $monHours, '$area')";
+    
+    $success = $link->query($q1);;
+
+    if(!$success) {
+        die ("Error updating details: " . $link->error);
+    }
 }
 
-if($teuHours)
+if($tueHours)
 {
-	$q2 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES (6, '$week', 'Teusday', $teuHours, '$area')";
+	$q2 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES ('" . $_SESSION['vol_no'] . "' '$week', 'Tuesday', $teuHours, '$area')";
 	$r2 = mysqli_query($link, $q2);
 }
 
 if($wedHours)
 {
-	$q3 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES (6, '$week', 'Wednesday', $wedHours, '$area')";
+	$q3 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES ('" . $_SESSION['vol_no'] . "', '$week', 'Wednesday', $wedHours, '$area')";
 	$r3 = mysqli_query($link, $q3);
 }
 
 if($thuHours)
 {
-	$q4 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES (6, '$week', 'Thursday', $thuHours, '$area')";
+	$q4 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES ('" . $_SESSION['vol_no'] . "', '$week', 'Thursday', $thuHours, '$area')";
 	$r4 = mysqli_query($link, $q4);
 }
 
 if($friHours)
 {
-	$q5 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES (6, '$week', 'Friday', $friHours, '$area')";
+	$q5 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES ('" . $_SESSION['vol_no'] . "', '$week', 'Friday', $friHours, '$area')";
 	$r5 = mysqli_query($link, $q5);
 }
 ?>
@@ -75,7 +81,7 @@ if($friHours)
             <div class="col-3 order-2 bg-light sidebar">
                 <div class="sticky-top">
                     <!-- Logo -->
-                    <a href="#"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
+                    <a href="index.php"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
                     <br><br>
                     <!-- Currently selected volunteer -->
                     <h5 class="text-center"><?php echo $_SESSION['full_name'] ?></h5>

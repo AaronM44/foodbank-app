@@ -1,6 +1,5 @@
 <?php
 error_reporting(E_ERROR | E_PARSE);
-//echo print_r($_POST) . '</br >';
 
 // database connection
 include('scripts/connect.php');
@@ -49,7 +48,7 @@ if($FoodBankCentre || $Fundraising || $PromoEvent || $BuddySch || $SuperColl || 
 {
 	$q1 = "INSERT INTO volunteer_details(title, forename, surname, address1, address2, town,  postcode, tel_no, email, DOB, EM_name, EM_tel, EM_rel, R1_name, R1_email, R1_tel, R1_rel, R2_name, R2_email, R2_tel, R2_rel, 
 	vol_status) VALUES ('$title','$forename','$surname','$address1','$address2','$town','$postcode','$tel_no','$email','$DOB','$EM_name','$EM_tel','$EM_rel','$R1_name','$R1_email','$R1_tel','$R1_rel','$R2_name','$R2_email',
-	'$R2_tel','$R2_rel','inactive')";
+	'$R2_tel','$R2_rel','active')";
 	$r1 = mysqli_query($link, $q1);
 	//$r1_num_results = mysqli_num_rows($r1);
 }
@@ -197,7 +196,7 @@ if($DeliveryColl !=null)
             <div class="col-3 order-2 bg-light sidebar">
                 <div class="sticky-top">
                     <!-- Logo -->
-                    <a href="#"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
+                    <a href="index.php"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
                     <br><br>
                     <!-- Currently selected volunteer -->
                     <h5 class="text-center">No Volunteer Selected</h5>
@@ -420,7 +419,7 @@ if($DeliveryColl !=null)
                                 <label class="form-check-label">
 									<label>Choose</label>&nbsp
 									<input name="WeekAvail[]" type="checkbox" value="Mon" id="check_id1"><label for="check_id1">Mon</label>&nbsp &nbsp
-									<input name="WeekAvail[]" type="checkbox" value="Teu" id="check_id1"><label for="check_id1">Teu</label>&nbsp &nbsp
+									<input name="WeekAvail[]" type="checkbox" value="Tue" id="check_id1"><label for="check_id1">Teu</label>&nbsp &nbsp
 									<input name="WeekAvail[]" type="checkbox" value="Wed" id="check_id1"><label for="check_id1">Wed</label>&nbsp &nbsp
 									<input name="WeekAvail[]" type="checkbox" value="Thu" id="check_id1"><label for="check_id1">Thu</label>&nbsp &nbsp
 									<input name="WeekAvail[]" type="checkbox" value="Fri" id="check_id1"><label for="check_id1">Fri</label>&nbsp &nbsp

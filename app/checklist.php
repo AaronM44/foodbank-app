@@ -235,7 +235,7 @@ if($FirstMreview)
             <div class="col-3 order-2 bg-light sidebar">
                 <div class="sticky-top">
                     <!-- Logo -->
-                    <a href="#"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
+                    <a href="index.php"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
                     <br><br>
                     <!-- Currently selected volunteer -->
                     <h5 class="text-center"><?php echo $_SESSION['full_name'] ?></h5>

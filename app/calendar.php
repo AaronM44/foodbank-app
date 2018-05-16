@@ -6,13 +6,14 @@ if (!isset($_SESSION))
 {
 	session_start();
 }
+
 $vol_no = $_SESSION['vol_no'];
 
 // database connection
 include('scripts/connect.php');
 
 // query to select timesheet information
-$q1 = "SELECT * FROM vol_weekly_hours WHERE vol_no = 1 ORDER BY date DESC";
+$q1 = "SELECT * FROM vol_weekly_hours WHERE vol_no = '" . $_SESSION['vol_no'] . "' ORDER BY date_ DESC";
 $r1 = mysqli_query($link, $q1);
 ?>
 <!DOCTYPE html>
@@ -36,7 +37,7 @@ $r1 = mysqli_query($link, $q1);
             <div class="col-3 order-2 bg-light sidebar">
                 <div class="sticky-top">
                     <!-- Logo -->
-                    <a href="#"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
+                    <a href="index.php"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
                     <br><br>
                     <!-- Currently selected volunteer -->
                     <h5 class="text-center"><?php echo $_SESSION['full_name'] ?></h5>
@@ -87,7 +88,8 @@ $r1 = mysqli_query($link, $q1);
                                     <th>Week</th>
                                     <th>Day</th>
                                     <th>Hours</th>
-									<th>Area</th>
+                                    <th>Area</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,10 +98,11 @@ $r1 = mysqli_query($link, $q1);
 							{
 								extract($row);
                                 echo "<tr>";
-                                echo     "<td>W/C $date</td>";
-								echo     "<td>$day</td>";
+                                echo     "<td>W/C $date_</td>";
+								echo     "<td>$day_</td>";
                                 echo     "<td>$hours</td>";
-								echo     "<td>$area</td>";
+                                echo     "<td>$area</td>";
+                                echo '<td><form action="scripts/del_timesheet.php" method="post"><div class="form-inline"><input class="form-control" type="hidden" name="vol_no" id="vol_no" value=' .$vol_no. '><input class="form-control" type="hidden" name="date" id="date" value=' .$date_. '><input class="form-control" type="hidden" name="day" id="day" value=' .$day_. '><input type="submit" value="Delete" class="btn btn-link"></div></form></td>';
                                 echo "</tr>";
 							}
 							?>
