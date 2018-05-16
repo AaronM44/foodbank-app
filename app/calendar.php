@@ -1,3 +1,20 @@
+<?php
+error_reporting(E_ERROR | E_PARSE);
+
+// session
+if (!isset($_SESSION)) 
+{
+	session_start();
+}
+$vol_no = $_SESSION['vol_no'];
+
+// database connection
+include('scripts/connect.php');
+
+// query to select timesheet information
+$q1 = "SELECT * FROM vol_weekly_hours WHERE vol_no = 1 ORDER BY date DESC";
+$r1 = mysqli_query($link, $q1);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,18 +39,18 @@
                     <a href="#"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
                     <br><br>
                     <!-- Currently selected volunteer -->
-                    <h5 class="text-center">No Volunteer Selected</h5>
+                    <h5 class="text-center"><?php echo $_SESSION['full_name'] ?></h5>
                     <br>
                     <!-- Vertical Nav Bar -->
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="volunteer.html">Volunteer Info</a>
+                            <a class="nav-link" href="volunteer.php">Volunteer Info</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="checklist.html">Starting Checklist</a>
+                            <a class="nav-link" href="checklist.php">Starting Checklist</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="calendar.html">Timesheets</a>
+                            <a class="nav-link active" href="calendar.php">Timesheets</a>
                         </li>        
                     </ul>
                 </div>
@@ -43,13 +60,13 @@
                 <nav class="navbar navbar-expand-sm bg-light navbar-light">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="application.html">New Volunteer</a>
+                            <a class="nav-link" href="application.php">New Volunteer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="timesheet.html">New Timesheet</a>
+                            <a class="nav-link" href="timesheet.php">New Timesheet</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reports</a>
+                            <a class="nav-link" href="reports.php">Reports</a>
                         </li>
                     </ul>
                     <!-- Search Bar -->
@@ -61,7 +78,34 @@
                 <!-- Content -->
                 <div class="container">
                     <br>
-                    
+                    <h2>Timesheets</h2>
+                    <p>Please select a timesheet to view.</p>
+                    <table class="table table-striped">
+                        <thread>
+                            <thead>
+                                <tr>
+                                    <th>Week</th>
+                                    <th>Day</th>
+                                    <th>Hours</th>
+									<th>Area</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+							<?php
+							while($row=mysqli_fetch_array($r1))
+							{
+								extract($row);
+                                echo "<tr>";
+                                echo     "<td>W/C $date</td>";
+								echo     "<td>$day</td>";
+                                echo     "<td>$hours</td>";
+								echo     "<td>$area</td>";
+                                echo "</tr>";
+							}
+							?>
+                            </tbody>
+                        </thread>
+                    </table>
                 </div>
             </div>
         </div>

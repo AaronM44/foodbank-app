@@ -112,7 +112,7 @@ else
 }
 
 
-if($r1)  // If the volunteer details were entered successfully to generate a new volunteer number
+if($vol_no)  // If the volunteer details were entered successfully to generate a new volunteer number
 {
 	// Query to insert posted data into 'application_details' table
 	$q2 = "INSERT INTO application_details (vol_no, OneOff, OnetoFour, Days, otherAvailability, why_interested, previous_work, health_problems, PVG, convictions, further_info, hear_about_FB, date_applied)

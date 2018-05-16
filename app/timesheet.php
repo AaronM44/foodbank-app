@@ -1,3 +1,56 @@
+<?php
+error_reporting(E_ERROR | E_PARSE);
+
+// session
+if (!isset($_SESSION)) 
+{
+	session_start();
+}
+$vol_no = $_SESSION['vol_no'];
+
+// database connection
+include('connect.php');
+
+// variables
+$week = $_POST['week'];
+$area = $_POST['area'];
+$monHours = $_POST['monHours'];
+$teuHours = $_POST['teuHours'];
+$wedHours = $_POST['wedHours'];
+$thuHours = $_POST['thuHours'];
+$friHours = $_POST['friHours'];
+
+// queries
+if($monHours)
+{
+	$q1 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES (6, '$week', 'Monday', $monHours, '$area')";
+	$r1 = mysqli_query($link, $q1);
+}
+
+if($teuHours)
+{
+	$q2 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES (6, '$week', 'Teusday', $teuHours, '$area')";
+	$r2 = mysqli_query($link, $q2);
+}
+
+if($wedHours)
+{
+	$q3 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES (6, '$week', 'Wednesday', $wedHours, '$area')";
+	$r3 = mysqli_query($link, $q3);
+}
+
+if($thuHours)
+{
+	$q4 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES (6, '$week', 'Thursday', $thuHours, '$area')";
+	$r4 = mysqli_query($link, $q4);
+}
+
+if($friHours)
+{
+	$q5 = "INSERT INTO vol_weekly_hours (vol_no, date_, day_, hours, area) VALUES (6, '$week', 'Friday', $friHours, '$area')";
+	$r5 = mysqli_query($link, $q5);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,7 +78,7 @@
                     <a href="#"><img class="mx-auto d-block" src="img/logo.png" width="200" title="Moray Foodbank" alt="Logo"></a>
                     <br><br>
                     <!-- Currently selected volunteer -->
-                    <h5 class="text-center">No Volunteer Selected</h5>
+                    <h5 class="text-center"><?php echo $_SESSION['full_name'] ?></h5>
                     <br>
                     <!-- Vertical Nav Bar -->
                     <ul class="nav nav-pills flex-column">
@@ -56,9 +109,9 @@
                         </li>
                     </ul>
                     <!-- Search Bar -->
-                    <form class="form-inline ml-auto" id="search" method="POST" action="results.php">
-                        <input class="form-control mr-sm-2" type="text" name="fullname" placeholder="First Name / Last Name">
-                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                    <form class="form-inline ml-auto" id="search">
+                        <input class="form-control mr-sm-2" placeholder="First Name / Last Name" type="text">
+                        <button class="btn btn-primary my-2 my-sm-0" type="button">Search</button>
                     </form>
                 </nav>
                 <!-- Content -->
@@ -66,23 +119,23 @@
                     <br>
                     <h2>New Timesheet</h2>
                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                    <form>
+                    <form name="form1" method="POST" action="timesheet.php">
                         <div class="row form">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="name">Week Commencing</label>
-                                    <input id="datepicker" width="270" />
-                                    <script>
+                                    <input type="date" id="datepicker" name="week" width="270" required />
+                                   <!-- <script>
                                         $('#datepicker').datepicker({
                                             uiLibrary: 'bootstrap4'
                                         }); 
-                                    </script>
+                                    </script> -->
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="email">Volunteering Area</label>
-                                    <select class="form-control" id="sel1" width="500">
+                                    <select class="form-control" name="area" id="sel1" width="500">
                                         <option>Foodbank Centre</option>
                                         <option>Fundraising</option>
                                         <option>Promotional Events</option>
@@ -97,43 +150,31 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="monday">Monday</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="number" name="monHours" class="form-control" id="exampleFormControlInput1" placeholder="" min=0>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="monday">Tuesday</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="number" name="teuHours" class="form-control" id="exampleFormControlInput1" placeholder="" min=0>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="monday">Wednesday</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="number" name="wedHours" class="form-control" id="exampleFormControlInput1" placeholder="" min=0>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="monday">Thursday</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="number" name="thuHours" class="form-control" id="exampleFormControlInput1" placeholder="" min=0>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="monday">Friday</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-md-1">
-                                <div class="form-group">
-                                    <label for="monday">Saturday</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-md-1">
-                                <div class="form-group">
-                                    <label for="monday">Sunday</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="number" name="friHours" class="form-control" id="exampleFormControlInput1" placeholder="" min=0>
                                 </div>
                             </div>
                         </div>
@@ -144,6 +185,12 @@
                         </div>
                         <br><br>
                     </form>
+					<?php
+					if($r1 || $r2 || $r3 || $r4 || $r5)
+					{
+						echo "New timesheet successfully entered.";
+					}
+					?>
                 </div>
             </div>
         </div>
