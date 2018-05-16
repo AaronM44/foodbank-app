@@ -78,7 +78,7 @@ $cruiseName=$row7['cruiseName'];
                                 <a class="nav-link" href="#">New Timesheet</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Reports</a>
+                                <a class="nav-link" href="reports.php">Reports</a>
                             </li>
                         </ul>
                         <!-- Search Bar -->

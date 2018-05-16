@@ -66,13 +66,13 @@
                     <!-- Vertical Nav Bar -->
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="volunteer.html">Volunteer Info</a>
+                            <a class="nav-link active" href="volunteer.php">Volunteer Info</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="checklist.html">Starting Checklist</a>
+                            <a class="nav-link" href="checklist.php">Starting Checklist</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="calendar.html">Timesheets</a>
+                            <a class="nav-link" href="calendar.php">Timesheets</a>
                         </li>        
                     </ul>
                 </div>
@@ -82,19 +82,19 @@
                 <nav class="navbar navbar-expand-sm bg-light navbar-light">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="application.html">New Volunteer</a>
+                            <a class="nav-link" href="application.php">New Volunteer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="timesheet.html">New Timesheet</a>
+                            <a class="nav-link" href="timesheet.php">New Timesheet</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reports</a>
+                            <a class="nav-link" href="reports.php">Reports</a>
                         </li>
                     </ul>
                     <!-- Search Bar -->
-                    <form class="form-inline ml-auto" id="search">
-                        <input class="form-control mr-sm-2" placeholder="First Name / Last Name" type="text">
-                        <button class="btn btn-primary my-2 my-sm-0" type="button">Search</button>
+                    <form class="form-inline ml-auto" id="search" method="POST" action="results.php">
+                        <input class="form-control mr-sm-2" type="text" name="fullname" placeholder="First Name / Last Name">
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </nav>
                 <!-- Content -->

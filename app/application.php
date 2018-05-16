@@ -221,10 +221,10 @@ if($DeliveryColl !=null)
                 <nav class="navbar navbar-expand-sm bg-light navbar-light">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="application.html">New Volunteer</a>
+                            <a class="nav-link active" href="application.php">New Volunteer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="timesheet.html">New Timesheet</a>
+                            <a class="nav-link" href="#">New Timesheet</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Reports</a>
