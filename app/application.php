@@ -61,14 +61,14 @@
                 <!-- Content -->
                 <div class="container">
                     <br>
-                    <form>
+                    <form id="frm_application" action="scripts/application.php" method="post">
                         <h2>New Volunteer Application</h2>
                         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                         <br>
                         <div class="form-inline">
                             <div class="form-inline">
                                 <label for="exampleFormControlInput1">Title &nbsp;</label>
-                                <select class="form-control" id="sel1">
+                                <select class="form-control" id="app_title">
                                     <option>Mr</option>
                                     <option>Mrs</option>
                                     <option>Miss</option>
@@ -77,105 +77,105 @@
                             </div>
                             <div class="form-inline">
                                 <label for="exampleFormControlInput1">&nbsp; First Name &nbsp;</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                <input type="text" class="form-control" id="app_first_name" placeholder="">
                             </div>
                             <div class="form-inline">
                                 <label for="exampleFormControlInput1">&nbsp; Last Name &nbsp;</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                <input type="text" class="form-control" id="app_last_name" placeholder="">
                             </div>
                         </div>
                         <br>
                         <div class="form-inline">
                             <label for="exampleFormControlInput1">Address Line 1 &nbsp;</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control" id="app_address1" placeholder="">
                         </div>
                         <br>
                         <div class="form-inline">
                             <label for="exampleFormControlInput1">Address Line 2 &nbsp;</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control" id="app_address2" placeholder="">
                         </div>
                         <br>
                         <div class="form-inline">
                             <label for="exampleFormControlInput1">Town/City &nbsp;</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control" id="app_town" placeholder="">
                         </div>
                         <br>
                         <div class="form-inline">
                             <label for="exampleFormControlInput1">Postcode &nbsp;</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control" id="app_postcode" placeholder="">
                         </div>
                         <br>
                         <div class="form-inline">
                             <label for="exampleFormControlInput1">Phone Number &nbsp;</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control" id="app_phone" placeholder="">
                         </div>
                         <br>
                         <div class="form-inline">
                             <label for="exampleFormControlInput1">Email Address &nbsp;</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control" id="app_email" placeholder="">
                         </div>
                         <br>
                         <label for="exampleFormControlInput1">Date of Birth &nbsp;</label>
                         <div class="form-inline">
                             <div class="form-inline">
-                                <input type="text" class="form-control col-sm-2" id="exampleFormControlInput1" placeholder="DD">
+                                <input type="text" class="form-control col-sm-2" id="app_day" placeholder="DD">
                                 <p>&nbsp; / &nbsp;</p>
-                                <input type="text" class="form-control col-sm-2" id="exampleFormControlInput1" placeholder="MM">
+                                <input type="text" class="form-control col-sm-2" id="app_month" placeholder="MM">
                                 <p>&nbsp; / &nbsp;</p>
-                                <input type="text" class="form-control col-sm-2" id="exampleFormControlInput1" placeholder="YYYY">
+                                <input type="text" class="form-control col-sm-2" id="app_year" placeholder="YYYY">
                             </div>
                         </div>
                         <br>
                         <h4>Emergency Contact</h4>
                         <div class="form-inline">
                             <label for="exampleFormControlInput1">Name &nbsp;</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control" id="app_contact_name" placeholder="">
                         </div>
                         <br>
                         <div class="form-inline">
                             <label for="exampleFormControlInput1">Tel No &nbsp;</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control" id="app_contact_phone" placeholder="">
                         </div>
                         <br>
                         <div class="form-inline">
                             <label for="exampleFormControlInput1">Relationship &nbsp;</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control" id="app_contact_relationship" placeholder="">
                         </div>
                         <br>
                         <h4>Volunteering Areas</h4>
                         <div class="form-inline">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" value="">Foodbank Centre
+                                    <input type="checkbox" class="form-check-input" id="app_area_centre" value="">Foodbank Centre
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" value="">Fundraising
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-inline">
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" value="">Promotional Events
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" value="">Buddy Scheme
+                                    <input type="checkbox" class="form-check-input" id="app_area_fundraising" value="">Fundraising
                                 </label>
                             </div>
                         </div>
                         <div class="form-inline">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" value="">Supermarket Collections
+                                    <input type="checkbox" class="form-check-input" id="app_area_events" value="">Promotional Events
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" value="">Delivery or Collections
+                                    <input type="checkbox" class="form-check-input" id="app_area_buddy" value="">Buddy Scheme
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-inline">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" id="app_area_supermarket" value="">Supermarket Collections
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" id="app_area_deliveries" value="">Delivery or Collections
                                 </label>
                             </div>
                         </div>
@@ -183,46 +183,46 @@
                         <h4>Availability</h4>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="">One off events
+                                <input type="checkbox" class="form-check-input" id="app_availability_one_off" value="">One off events
                             </label>
                         </div>
                         <div class="form-inline">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" value="">1-4 hours a week
+                                    <input type="checkbox" class="form-check-input" id="app_availability_1-4" value="">1-4 hours a week
                                 </label>
                             </div>
                         </div>
                         <div class="form-inline">
                             <label for="exampleFormControlInput1">Other &nbsp;</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <input type="text" class="form-control" id="app_availability_other" placeholder="">
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="comment">Interest in volunteering</label>
-                            <textarea class="form-control" rows="5" cols="50" id="comment"></textarea>
+                            <textarea class="form-control" rows="5" cols="50" id="app_interest"></textarea>
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="comment">Previous work, volunteering experience or relevant qualifications</label>
-                            <textarea class="form-control" rows="5" cols="50" id="comment"></textarea>
+                            <textarea class="form-control" rows="5" cols="50" id="app_experience"></textarea>
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="comment">Health issues to be aware of</label>
-                            <textarea class="form-control" rows="5" cols="50" id="comment"></textarea>
+                            <textarea class="form-control" rows="5" cols="50" id="app_health_issues"></textarea>
                         </div>
                         <br>
                         <h4>Criminal Convictions</h4>
                         <div class="form-inline">
                             <div class="form-check-inline">
                                 <label class="form-check-label">Willing to submit to a PVG check? &nbsp
-                                    <input type="checkbox" class="form-check-input" value="">Yes
+                                    <input type="checkbox" class="form-check-input" id="app_pvg_yes" value="">Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" value="">No
+                                    <input type="checkbox" class="form-check-input" id="app_pvg_no" value="">No
                                 </label>
                             </div>
                         </div>
@@ -230,24 +230,24 @@
                         <div class="form-inline">
                             <div class="form-check-inline">
                                 <label class="form-check-label">Any criminal convictions &nbsp
-                                    <input type="checkbox" class="form-check-input" value="">Yes
+                                    <input type="checkbox" class="form-check-input" id="app_convictions_yes" value="">Yes
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" value="">No
+                                    <input type="checkbox" class="form-check-input" id="app_convictions_no" value="">No
                                 </label>
                             </div>
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="comment">If yes, give details</label>
-                            <textarea class="form-control" rows="5" cols="50" id="comment"></textarea>
+                            <textarea class="form-control" rows="5" cols="50" id="app_convictions_details"></textarea>
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="comment">Any further information</label>
-                            <textarea class="form-control" rows="5" cols="50" id="comment"></textarea>
+                            <textarea class="form-control" rows="5" cols="50" id="app_further_info"></textarea>
                         </div>
                         <br>
                         <div class="form-group">
