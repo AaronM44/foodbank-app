@@ -29,7 +29,13 @@
     $success2 = $link->query($query2);
 
     if(!$success1 || !$success2) {
-        die ("Error updating details: " . $link->error);
+        
+        $_SESSION['error'] = "<strong>Error!</strong> Something went wrong.";
+        #die ("Error updating details: " . $link->error);
+    }
+    else {
+
+        $_SESSION['success'] = "<strong>Success!</strong> Volunteer updated.";
     }
 
     $link->close();

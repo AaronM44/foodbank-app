@@ -39,13 +39,13 @@ $r1 = mysqli_query($link, $q1);
                         <!-- Vertical Nav Bar -->
                         <ul class="nav nav-pills flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="volunteer.php">Volunteer Info</a>
+                                <a class="nav-link disabled" href="#">Volunteer Info</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="checklist.php">Starting Checklist</a>
+                                <a class="nav-link disabled" href="#">Starting Checklist</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="calendar.php">Timesheets</a>
+                                <a class="nav-link disabled" href="#">Timesheets</a>
                             </li>        
                         </ul>
                     </div>
@@ -58,13 +58,13 @@ $r1 = mysqli_query($link, $q1);
                                 <a class="nav-link" href="application.php">New Volunteer</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="timesheet.php">New Timesheet</a>
+                                <a class="nav-link disabled" href="#">New Timesheet</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="reports.php">Reports</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="arch.php">Inactive volunteers</a>
+                                <a class="nav-link" href="arch.php">Inactive Volunteers</a>
                             </li>
                         </ul>
                         <!-- Search Bar -->

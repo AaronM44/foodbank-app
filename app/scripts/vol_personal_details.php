@@ -25,13 +25,17 @@
     $query = "update volunteer_details set title = '" . $title . "', forename = '" . $first_name . "', surname = '" . $last_name . "', 
         address1 = '" . $address1 . "', address2 = '" . $address2 . "', town = '" . $town . "', postcode = '" . $postcode . "', tel_no = '" . $tel_no . "', DOB = '" . $dob . "'
         where vol_no = '" . $_SESSION['vol_no'] . "'";
-
-    echo $query;
     
     $success = $link->query($query);
 
     if(!$success) {
-        die ("Error updating details: " . $link->error);
+        
+        $_SESSION['error'] = "<strong>Error!</strong> Something went wrong.";
+        #die ("Error updating details: " . $link->error);
+    }
+    else {
+
+        $_SESSION['success'] = "<strong>Success!</strong> Volunteer updated.";
     }
 
     # Update session variables in case name changed

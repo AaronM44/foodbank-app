@@ -46,10 +46,11 @@ $DeliveryColl = $_POST['DeliveryColl'];
 // Query - vol details
 if($FoodBankCentre || $Fundraising || $PromoEvent || $BuddySch || $SuperColl || $DeliveryColl)
 {
-	$q1 = "INSERT INTO volunteer_details(title, forename, surname, address1, address2, town,  postcode, tel_no, email, DOB, EM_name, EM_tel, EM_rel, R1_name, R1_email, R1_tel, R1_rel, R2_name, R2_email, R2_tel, R2_rel, 
+	$query1 = "INSERT INTO volunteer_details(title, forename, surname, address1, address2, town,  postcode, tel_no, email, DOB, EM_name, EM_tel, EM_rel, R1_name, R1_email, R1_tel, R1_rel, R2_name, R2_email, R2_tel, R2_rel, 
 	vol_status) VALUES ('$title','$forename','$surname','$address1','$address2','$town','$postcode','$tel_no','$email','$DOB','$EM_name','$EM_tel','$EM_rel','$R1_name','$R1_email','$R1_tel','$R1_rel','$R2_name','$R2_email',
-	'$R2_tel','$R2_rel','active')";
-	$r1 = mysqli_query($link, $q1);
+    '$R2_tel','$R2_rel','active')";
+    
+    $query1_success = $link->query(query1);
 	//$r1_num_results = mysqli_num_rows($r1);
 }
 
@@ -59,11 +60,11 @@ else
 { echo " Fail: volunteer_details."; }*/
 
 // Query to get last volunteer number
-$q32 = "SELECT * FROM volunteer_details ORDER BY vol_no DESC";
-$r32 = mysqli_query($link, $q32);
-$row=mysqli_fetch_array($r32);
+$query_last_vol_no = "SELECT * FROM volunteer_details ORDER BY vol_no DESC";
+$result_last_vol_no = mysqli_query($link, $query_last_vol_no);
+$row = mysqli_fetch_array($result_last_vol_no);
 extract($row);
-$vol_no=$row['vol_no'];
+$vol_no = $row['vol_no'];
 //echo "VolNo: $vol_no";
 
 // variables - application_details
@@ -114,9 +115,9 @@ else
 if($vol_no)  // If the volunteer details were entered successfully to generate a new volunteer number
 {
 	// Query to insert posted data into 'application_details' table
-	$q2 = "INSERT INTO application_details (vol_no, OneOff, OnetoFour, Days, otherAvailability, why_interested, previous_work, health_problems, PVG, convictions, further_info, hear_about_FB, date_applied)
+	$query2 = "INSERT INTO application_details (vol_no, OneOff, OnetoFour, Days, otherAvailability, why_interested, previous_work, health_problems, PVG, convictions, further_info, hear_about_FB, date_applied)
 	VALUES ($vol_no, $OneEvent, $TmeAvail, '$days', '$OtherAvail', '$ReasonInterest', '$WorkExp', '$HealthIssueDetail', $PVG, '$CrimYesDetail','$MiscInfo','$MiscInfoHow','$date')";
-	$r2 = mysqli_query($link, $q2);
+	$query2_success = $link->quer(query2);
 }
 
 /*
@@ -139,39 +140,50 @@ for($i < $temp; $i++;)
 /* Probably a better way using a loop (Attempted this above) */
 if($FoodBankCentre !=null)
 {
-	$q5 = "INSERT INTO `vol_interests`(`vol_no`, `interest_no`) VALUES ($vol_no, $FoodBankCentre)";
-	$r5 = mysqli_query($link, $q5);
+	$query5 = "INSERT INTO `vol_interests`(`vol_no`, `interest_no`) VALUES ($vol_no, $FoodBankCentre)";
+	$query5_success = $link->query(query5);
 }
 
 if($Fundraising !=null)
 {
-	$q6 = "INSERT INTO vol_interests (vol_no, interest_no) VALUES ($vol_no, $Fundraising)";
-	$r6 = mysqli_query($link, $q6);
+	$query6 = "INSERT INTO vol_interests (vol_no, interest_no) VALUES ($vol_no, $Fundraising)";
+	$query6_success = $link->query(query6);
 }
 
 if($PromoEvent !=null)
 {
-	$q7 = "INSERT INTO vol_interests (vol_no, interest_no) VALUES ($vol_no, $PromoEvent)";
-	$r7 = mysqli_query($link, $q7);
+	$query7 = "INSERT INTO vol_interests (vol_no, interest_no) VALUES ($vol_no, $PromoEvent)";
+	$query7_success = $link->query(query7);
 }
 
 if($BuddySch !=null)
 {
-	$q8 = "INSERT INTO vol_interests (vol_no, interest_no) VALUES ($vol_no, $BuddySch)";
-	$r8 = mysqli_query($link, $q8);
+	$query8 = "INSERT INTO vol_interests (vol_no, interest_no) VALUES ($vol_no, $BuddySch)";
+	$query8_success = $link->query(query8);
 }
 
 if($SuperColl !=null)
 {
-	$q9 = "INSERT INTO vol_interests (vol_no, interest_no) VALUES ($vol_no, $SuperColl)";
-	$r9 = mysqli_query($link, $q9);
+	$query9 = "INSERT INTO vol_interests (vol_no, interest_no) VALUES ($vol_no, $SuperColl)";
+	$query9_success = $link->query(query9);
 }
 
 if($DeliveryColl !=null)
 {
-	$q10 = "INSERT INTO vol_interests (vol_no, interest_no) VALUES ($vol_no, $DeliveryColl)";
-	$r10 = mysqli_query($link, $q10);
+	$query10 = "INSERT INTO vol_interests (vol_no, interest_no) VALUES ($vol_no, $DeliveryColl)";
+	$query10_success = $link->query(query10);
 }
+
+# Alert Messages
+
+if($query2_success && ($query5_success || $query6_success || $query7_success || 
+    $query8_success || $query9_success || $query10_success)) // dont think work's properly - supposed to display if new vol entered and at least one volunteer area picked
+    {
+        $_SESSION['success'] = "<strong>Success!</strong> Volunteer added to database.";
+    }
+    else {
+        $_SESSION['error'] = "<strong>Error!</strong> Something went wrong.";
+    }
 ?>
 
 
@@ -237,6 +249,28 @@ if($DeliveryColl !=null)
                 </nav>
                 <!-- Content -->
                 <div class="container">
+                    <!-- ********** ALERT MESSAGES ********** -->
+                    <?php if (isset($_SESSION['error'])): ?>
+                        <?php echo "<div class=\"alert alert-danger\" role=\"alert\">" ?>
+                        <?php echo $_SESSION['error'] ?>
+                        <?php echo "</div>" ?>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['warning'])): ?>
+                        <?php echo "<div class=\"alert alert-warning\" role=\"alert\">" ?>
+                        <?php echo $_SESSION['warning'] ?>
+                        <?php echo "</div>" ?>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['info'])): ?>
+                        <?php echo "<div class=\"alert alert-info\" role=\"alert\">" ?>
+                        <?php echo $_SESSION['info'] ?>
+                        <?php echo "</div>" ?>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['success'])): ?>
+                        <?php echo "<div class=\"alert alert-success\" role=\"alert\">" ?>
+                        <?php echo $_SESSION['success'] ?>
+                        <?php echo "</div>" ?>
+                    <?php endif; ?>
+
                     <br>
                     <form name='form1' method='POST' action='application.php'>
                         <h2>New Volunteer Application</h2>
@@ -510,4 +544,11 @@ if($DeliveryColl !=null)
             </div>
         </div>
     </body>
+    <!-- Unset the error message variables -->
+    <?php 
+        unset($_SESSION['error']);
+        unset($_SESSION['warning']);
+        unset($_SESSION['info']);
+        unset($_SESSION['success']);
+    ?>
 </html>

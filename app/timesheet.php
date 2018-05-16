@@ -122,6 +122,28 @@ if($friHours)
                 </nav>
                 <!-- Content -->
                 <div class="container">
+                    <!-- ********** ALERT MESSAGES ********** -->
+                    <?php if (isset($_SESSION['error'])): ?>
+                        <?php echo "<div class=\"alert alert-danger\" role=\"alert\">" ?>
+                        <?php echo $_SESSION['error'] ?>
+                        <?php echo "</div>" ?>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['warning'])): ?>
+                        <?php echo "<div class=\"alert alert-warning\" role=\"alert\">" ?>
+                        <?php echo $_SESSION['warning'] ?>
+                        <?php echo "</div>" ?>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['info'])): ?>
+                        <?php echo "<div class=\"alert alert-info\" role=\"alert\">" ?>
+                        <?php echo $_SESSION['info'] ?>
+                        <?php echo "</div>" ?>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['success'])): ?>
+                        <?php echo "<div class=\"alert alert-success\" role=\"alert\">" ?>
+                        <?php echo $_SESSION['success'] ?>
+                        <?php echo "</div>" ?>
+                    <?php endif; ?>
+                    
                     <br>
                     <h2>New Timesheet</h2>
                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
@@ -201,4 +223,11 @@ if($friHours)
             </div>
         </div>
     </body>
+    <!-- Unset the error message variables -->
+    <?php 
+        unset($_SESSION['error']);
+        unset($_SESSION['warning']);
+        unset($_SESSION['info']);
+        unset($_SESSION['success']);
+    ?>
 </html>
